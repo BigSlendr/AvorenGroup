@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inquiries | Avoren Group</title>
+    <meta name="description" content="Contact Avoren Group for acquisition introductions or partnership inquiries." />
+    <meta property="og:title" content="Inquiries | Avoren Group" />
+    <meta
+      property="og:description"
+      content="Contact Avoren Group for acquisition introductions or partnership inquiries."
+    />
+    <meta property="og:image" content="assets/img/og-placeholder.png" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container navbar">
+        <a class="brand" href="index.html">Avoren Group</a>
+        <nav>
+          <button class="menu-toggle btn-text" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+          <div class="nav-links" id="nav-menu">
+            <a href="about.html">About</a>
+            <a href="holdings.html">Holdings</a>
+            <a href="involved.html">Get Involved</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="contact.html">Inquiries</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="meta">Contact</p>
+          <h1 class="page-title">Inquiries</h1>
+          <p>We review serious inquiries and respond when there is fit.</p>
+          <p class="meta">Direct email: <a href="mailto:inquiries@avorengroup.com">inquiries@avorengroup.com</a></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <form class="form" data-contact-form>
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="organization">Organization</label>
+              <input id="organization" name="organization" type="text" autocomplete="organization" />
+            </div>
+            <div>
+              <label for="inquiry_type">Inquiry Type</label>
+              <select id="inquiry_type" name="inquiry_type" required>
+                <option value="">Select one</option>
+                <option>Acquisition</option>
+                <option>Partnership</option>
+                <option>Operator Introduction</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Prepare Email</button>
+            <p class="form-note">Submitting prepares an email draft. Your message is not sent automatically.</p>
+          </form>
+
+          <div class="success" data-success-message>
+            <p>
+              Thank you. Your message has been prepared. Please email it to:
+              <strong>inquiries@avorengroup.com</strong>
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-secondary" data-mailto-button aria-disabled="true" href="#">Open email client</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <div>
+          © <span data-current-year></span> Avoren Group. All rights reserved.
+          <div class="meta">Avoren Group is a private holding company.</div>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
