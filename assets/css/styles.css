@@ -1,12 +1,17 @@
 :root {
   color-scheme: light;
-  --color-bg: #f7f7f5;
+  --color-bg: #f5f2ea;
   --color-surface: #ffffff;
-  --color-text: #111111;
-  --color-muted: #4a4a4a;
-  --color-border: #e4e4e1;
-  --color-accent: #1b1f2a;
-  --color-accent-hover: #151923;
+  --color-text: #243248;
+  --color-muted: #5c677b;
+  --color-border: rgba(200, 166, 90, 0.22);
+  --color-accent: #c8a65a;
+  --color-accent-hover: #b89143;
+  --color-heading: #0b1f3b;
+  --hero-gradient: linear-gradient(135deg, #0b1f3b 0%, #243248 55%, #0b1f3b 100%);
+  --hero-text: #f5f2ea;
+  --hero-subtext: rgba(245, 242, 234, 0.82);
+  --hero-border: rgba(200, 166, 90, 0.35);
   --shadow-soft: 0 8px 18px rgba(17, 17, 17, 0.06);
   --radius: 10px;
   --container: 1180px;
@@ -38,8 +43,13 @@ img {
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent);
   text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-heading);
 }
 
 ul {
@@ -56,7 +66,7 @@ ul {
 header {
   position: sticky;
   top: 0;
-  background: rgba(247, 247, 245, 0.96);
+  background: rgba(245, 242, 234, 0.96);
   border-bottom: 1px solid var(--color-border);
   z-index: 10;
   backdrop-filter: blur(8px);
@@ -70,8 +80,15 @@ header {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.brand-logo {
+  max-height: 34px;
+  width: auto;
 }
 
 .nav-links {
@@ -82,12 +99,12 @@ header {
 }
 
 .nav-links a {
-  color: var(--color-muted);
+  color: var(--color-text);
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--color-text);
+  color: var(--color-accent);
 }
 
 .nav-actions {
@@ -112,7 +129,7 @@ header {
 
 .btn-primary {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-heading);
 }
 
 .btn-primary:hover,
@@ -122,14 +139,15 @@ header {
 
 .btn-secondary {
   border-color: var(--color-border);
-  color: var(--color-text);
+  color: var(--color-heading);
   background: transparent;
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus-visible {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-heading);
+  background: rgba(200, 166, 90, 0.12);
 }
 
 .btn-text {
@@ -154,17 +172,71 @@ main {
 
 .hero {
   padding: var(--space-2xl) 0;
+  position: relative;
+  background: var(--hero-gradient);
+  border-bottom: 1px solid var(--hero-border);
+  color: var(--hero-text);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(200, 166, 90, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(245, 242, 234, 0.08), transparent 55%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: clamp(1.5rem, 6vw, 3.5rem);
+  bottom: clamp(1.5rem, 6vw, 3rem);
+  width: clamp(80px, 12vw, 140px);
+  height: clamp(80px, 12vw, 140px);
+  background: url("../img/AV-Box.png") no-repeat center/contain;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
   font-size: clamp(2rem, 3vw, 3rem);
   margin-bottom: var(--space-md);
+  color: var(--hero-text);
 }
 
 .hero p {
-  color: var(--color-muted);
+  color: var(--hero-subtext);
   font-size: 1.05rem;
   max-width: 680px;
+}
+
+.hero .meta {
+  color: var(--hero-subtext);
+}
+
+.hero .btn-primary {
+  background: var(--color-accent);
+  color: var(--color-heading);
+}
+
+.hero .btn-secondary {
+  border-color: var(--color-accent);
+  color: var(--hero-text);
+}
+
+.hero .btn-secondary:hover,
+.hero .btn-secondary:focus-visible {
+  background: rgba(200, 166, 90, 0.18);
+  color: var(--hero-text);
 }
 
 .hero-actions {
@@ -182,6 +254,7 @@ main {
 .section h2 {
   font-size: 1.75rem;
   margin-bottom: var(--space-md);
+  color: var(--color-heading);
 }
 
 .section p {
@@ -297,6 +370,18 @@ footer {
   font-size: 0.9rem;
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text);
+}
+
+.footer-mark {
+  width: 28px;
+  height: 28px;
+}
+
 .footer-content {
   display: flex;
   align-items: center;
@@ -312,6 +397,15 @@ footer {
 
 .page-title {
   margin-bottom: var(--space-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
 }
 
 .meta {
@@ -331,6 +425,38 @@ footer {
   border-radius: 999px;
   padding: 0.35rem 0.8rem;
   font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.focus-grid {
+  margin-top: var(--space-lg);
+}
+
+.focus-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.focus-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 166, 90, 0.35);
+  box-shadow: 0 12px 22px rgba(11, 31, 59, 0.08);
+}
+
+.focus-card img {
+  border-radius: calc(var(--radius) - 2px);
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: var(--space-md);
+  border: 1px solid rgba(200, 166, 90, 0.22);
+}
+
+.focus-card p {
   color: var(--color-muted);
 }
 
